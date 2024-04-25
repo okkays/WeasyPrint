@@ -405,6 +405,8 @@ class Document:
             _, properties = VARIANTS[variant]
             if 'version' in properties:
                 version = properties['version']
+            if 'identifier' in properties and not identifier:
+                identifier = properties['identifier']
 
         if finisher:
             finisher(self, pdf)
