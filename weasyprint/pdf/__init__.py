@@ -8,7 +8,7 @@ from ..logger import LOGGER, PROGRESS_LOGGER
 from ..matrix import Matrix
 from . import pdfa, pdfua
 from .anchors import (
-    add_annotations, add_inputs, add_links, add_outlines, resolve_links,
+    add_annotations, add_forms, add_links, add_outlines, resolve_links,
     write_pdf_attachment)
 from .fonts import build_fonts_dictionary
 from .stream import Stream
@@ -183,8 +183,8 @@ def generate_pdf(document, target, zoom, **options):
         add_annotations(
             links_and_anchors[0], matrix, document, pdf, pdf_page, annot_files,
             compress)
-        add_inputs(
-            page.inputs, matrix, pdf, pdf_page, resources, stream,
+        add_forms(
+            page.forms, matrix, pdf, pdf_page, resources, stream,
             document.font_config.font_map, compress)
         page.paint(stream, scale)
 
